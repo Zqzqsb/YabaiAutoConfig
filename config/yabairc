@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# 基础布局
+yabai -m config layout bsp
+yabai -m config window_gap 5           # 窗口间距
+yabai -m config top_padding 5          # 顶部留白（适配状态栏）
+yabai -m config bottom_padding 5       # 底部留白
+
+# 窗口装饰
+yabai -m config window_border on        # 启用窗口边框
+yabai -m config window_border_width 1   # 边框宽度
+yabai -m config active_window_border_color 0xFF6C71FF  # 活动窗口边框颜色（蓝色）
+yabai -m config normal_window_border_color 0x333333AA  # 非活动窗口边框（半透明灰）
+
+# 动画效果
+yabai -m config mouse_follows_focus on  # 鼠标平滑跟随焦点
+yabai -m config focus_follows_mouse autofocus  # 焦点随鼠标移动
+
+# 为 SpaceId 添加信号，使其能够正确显示当前桌面信息
+yabai -m signal --add event=space_changed action="open -gj 'spaceid://refresh'"
+yabai -m signal --add event=display_changed action="open -gj 'spaceid://refresh'"
+
+# 应用程序排除列表（这些应用程序将不受 yabai 管理）
+yabai -m rule --add app="^系统设置$" manage=off
+yabai -m rule --add app="^计算器$" manage=off
+yabai -m rule --add app="^活动监视器$" manage=off
+yabai -m rule --add app="^提醒事项$" manage=off
+yabai -m rule --add app="^日历$" manage=off
+yabai -m rule --add app="^预览$" manage=off
+yabai -m rule --add app="^关于本机$" manage=off
+yabai -m rule --add app="^字体册$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
+yabai -m rule --add app="^Reminders$" manage=off
+yabai -m rule --add app="^Calendar$" manage=off
+yabai -m rule --add app="^Preview$" manage=off
+yabai -m rule --add app="^About This Mac$" manage=off
+yabai -m rule --add app="^Font Book$" manage=off
+
+echo "yabai 配置加载完成！"

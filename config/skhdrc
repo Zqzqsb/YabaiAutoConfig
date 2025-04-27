@@ -1,0 +1,42 @@
+# === 窗口焦点切换 ===
+# 使用 Alt + Shift + HJKL
+alt + shift - h : yabai -m window --focus west    # ← 左
+alt + shift - j : yabai -m window --focus south   # ↓ 下
+alt + shift - k : yabai -m window --focus north   # ↑ 上
+alt + shift - l : yabai -m window --focus east    # → 右
+
+# 使用 Alt + 方向键
+alt - left  : yabai -m window --focus west        # ← 左
+alt - down  : yabai -m window --focus south       # ↓ 下
+alt - up    : yabai -m window --focus north       # ↑ 上
+alt - right : yabai -m window --focus east        # → 右
+
+# === 窗口大小调整（Alt + HJKL） ===
+# 只使用左右边框调整
+alt - h : yabai -m window --resize left:-50:0    # 左边框向左移动（窗口变宽）
+alt - j : yabai -m window --resize left:50:0     # 左边框向右移动（窗口变窄）
+alt - k : yabai -m window --resize right:-50:0   # 右边框向左移动（窗口变窄）
+alt - l : yabai -m window --resize right:50:0    # 右边框向右移动（窗口变宽）
+
+# === 窗口移动与空间管理 ===
+# 切换到指定空间
+alt - i : yabai -m space --focus 1              # 切换到1号空间
+alt - o : yabai -m space --focus 2              # 切换到2号空间
+alt - p : yabai -m space --focus 3              # 切换到3号空间
+alt - 0x21 : yabai -m space --focus 4           # 切换到4号空间（[键）
+alt - 0x1E : yabai -m space --focus 5           # 切换到5号空间（]键）
+
+# 移动当前窗口到指定空间
+alt + shift - i : yabai -m window --space 1     # 移动到1号空间
+alt + shift - o : yabai -m window --space 2     # 移动到2号空间
+alt + shift - p : yabai -m window --space 3     # 移动到3号空间
+alt + shift - 0x21 : yabai -m window --space 4  # 移动到4号空间（[键）
+alt + shift - 0x1E : yabai -m window --space 5  # 移动到5号空间（]键）
+
+# === 快速窗口交换（Alt + Ctrl + HJKL） ===
+alt + ctrl - h : yabai -m window --swap west     # ← 左移窗口
+alt + ctrl - l : yabai -m window --swap east     # → 右移窗口
+
+# === 其他功能 ===
+alt - t : yabai -m window --toggle float        # 切换浮动
+alt - f : yabai -m window --toggle zoom-full    # 全屏切换
