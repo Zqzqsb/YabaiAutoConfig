@@ -8,35 +8,28 @@
 
 ```mermaid
 graph TD
+    classDef screen fill:#f9f9f9,stroke:#333,stroke-width:2px
+    classDef window fill:#e6f3ff,stroke:#0066cc,stroke-width:1px
+    
     subgraph "yabai 二分空间分割布局"
-        A[屏幕] --> B[左侧窗口]
-        A --> C[右侧窗口]
-        B --> D[左上窗口]
-        B --> E[左下窗口]
-        C --> F[右上窗口]
-        C --> G[右下窗口]
-    end
-```
-
-### 快捷键映射图
-
-```mermaid
-flowchart LR
-    subgraph "窗口焦点切换"
-        A1["Alt + Shift + H/J/K/L"] --> B1["切换到左/下/上/右侧窗口"]
-        A2["Alt + 方向键"] --> B1
-    end
-    
-    subgraph "窗口大小调整"
-        C1["Alt + H"] --> D1["左边框向左移动（窗口变宽）"]
-        C2["Alt + J"] --> D2["左边框向右移动（窗口变窄）"]
-        C3["Alt + K"] --> D3["右边框向左移动（窗口变窄）"]
-        C4["Alt + L"] --> D4["右边框向右移动（窗口变宽）"]
-    end
-    
-    subgraph "工作区管理"
-        E1["Alt + I/O/P/[/]"] --> F1["切换到 1/2/3/4/5 号空间"]
-        E2["Alt + Shift + I/O/P/[/]"] --> F2["将窗口移动到 1/2/3/4/5 号空间"]
+        Screen[屏幕]:::screen
+        
+        Screen --> |"初始分割"| Left["左侧区域"]:::window
+        Screen --> |"初始分割"| Right["右侧区域"]:::window
+        
+        Left --> |"水平分割"| TopLeft["左上窗口"]:::window
+        Left --> |"水平分割"| BottomLeft["左下窗口"]:::window
+        
+        Right --> |"垂直分割"| TopRight["右上窗口"]:::window
+        Right --> |"垂直分割"| BottomRight["右下窗口"]:::window
+        
+        style Screen width:200px,height:100px
+        style Left width:90px,height:180px
+        style Right width:90px,height:180px
+        style TopLeft width:90px,height:80px
+        style BottomLeft width:90px,height:80px
+        style TopRight width:90px,height:80px
+        style BottomRight width:90px,height:80px
     end
 ```
 
