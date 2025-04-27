@@ -34,9 +34,21 @@ alt + shift - 0x21 : yabai -m window --space 4  # 移动到4号空间（[键）
 alt + shift - 0x1E : yabai -m window --space 5  # 移动到5号空间（]键）
 
 # === 快速窗口交换（Alt + Ctrl + HJKL） ===
-alt + ctrl - h : yabai -m window --swap west     # ← 左移窗口
-alt + ctrl - l : yabai -m window --swap east     # → 右移窗口
+alt + ctrl - left  : yabai -m window --swap west     # ← 左移窗口
+alt + ctrl - right : yabai -m window --swap east     # → 右移窗口
 
 # === 其他功能 ===
-alt - t : yabai -m window --toggle float        # 切换浮动
-alt - f : yabai -m window --toggle zoom-full    # 全屏切换
+alt - f : yabai -m window --toggle zoom-parent  # 临时全屏（父容器）
+alt - e : yabai -m space --layout bsp           # 切换到二分空间分割布局
+alt - s : yabai -m space --layout stack         # 切换到堆叠布局
+alt - r : yabai -m space --rotate 90            # 旋转布局 90 度
+alt - y : yabai -m space --mirror y-axis        # 沿 Y 轴镜像翻转
+alt - x : yabai -m space --mirror x-axis        # 沿 X 轴镜像翻转
+alt - m : yabai -m space --balance              # 重新平衡所有窗口
+
+# 切换分割方向（横向/纵向）
+alt - n : yabai -m window --toggle split
+
+# 测试快捷键 - 按下时会显示通知
+# 测试快捷键 - 使用不太可能被占用的组合
+ctrl + alt - t : osascript -e "display notification \"skhd 工作正常！\" with title \"skhd 测试\""
