@@ -18,20 +18,20 @@ alt - j : yabai -m window --resize left:50:0     # 左边框向右移动（窗�
 alt - k : yabai -m window --resize right:-50:0   # 右边框向左移动（窗口变窄）
 alt - l : yabai -m window --resize right:50:0    # 右边框向右移动（窗口变宽）
 
-# === 窗口移动与空间管理 ===
+# === 窗口移动与空间管理 ===    
 # 切换到指定空间
-alt - i : yabai -m space --focus 1              # 切换到1号空间
-alt - o : yabai -m space --focus 2              # 切换到2号空间
-alt - p : yabai -m space --focus 3              # 切换到3号空间
-alt - 0x21 : yabai -m space --focus 4           # 切换到4号空间（[键）
-alt - 0x1E : yabai -m space --focus 5           # 切换到5号空间（]键）
-
+alt - 1 : yabai -m space --focus 1              # 切换到1号空间
+alt - 2 : yabai -m space --focus 2              # 切换到2号空间
+alt - 3 : yabai -m space --focus 3              # 切换到3号空间
+alt - 4 : yabai -m space --focus 4              # 切换到4号空间
+alt - 5 : yabai -m space --focus 5              # 切换到5号空间
+    
 # 移动当前窗口到指定空间
-alt + shift - i : yabai -m window --space 1     # 移动到1号空间
-alt + shift - o : yabai -m window --space 2     # 移动到2号空间
-alt + shift - p : yabai -m window --space 3     # 移动到3号空间
-alt + shift - 0x21 : yabai -m window --space 4  # 移动到4号空间（[键）
-alt + shift - 0x1E : yabai -m window --space 5  # 移动到5号空间（]键）
+alt + shift - 1 : yabai -m window --space 1     # 移动到1号空间
+alt + shift - 2 : yabai -m window --space 2     # 移动到2号空间
+alt + shift - 3 : yabai -m window --space 3     # 移动到3号空间
+alt + shift - 4 : yabai -m window --space 4     # 移动到4号空间
+alt + shift - 5 : yabai -m window --space 5     # 移动到5号空间
 
 # === 快速窗口交换（Alt + Ctrl + HJKL） ===
 alt + ctrl - left  : yabai -m window --swap west     # ← 左移窗口
@@ -49,6 +49,11 @@ alt - m : yabai -m space --balance              # 重新平衡所有窗口
 # 切换分割方向（横向/纵向）
 alt - n : yabai -m window --toggle split
 
+# === 快速启动应用（新窗口） ===
+
+# 在当前工作区打开新的 Chrome 窗口
+alt - c : osascript -e 'tell application "Google Chrome" to make new window' -e 'tell application "Google Chrome" to activate'
+
+# === 测试 ===
 # 测试快捷键 - 按下时会显示通知
-# 测试快捷键 - 使用不太可能被占用的组合
 ctrl + alt - t : osascript -e "display notification \"skhd 工作正常！\" with title \"skhd 测试\""
