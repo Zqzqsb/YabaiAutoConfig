@@ -2,6 +2,70 @@
 
 一键配置 yabai 窗口管理器和 skhd 热键守护进程的自动化脚本，适用于已关闭 SIP 的 macOS 系统。
 
+## 效果展示
+
+### 窗口布局示意图
+
+```mermaid
+graph TD
+    subgraph "yabai 二分空间分割布局"
+        A[屏幕] --> B[左侧窗口]
+        A --> C[右侧窗口]
+        B --> D[左上窗口]
+        B --> E[左下窗口]
+        C --> F[右上窗口]
+        C --> G[右下窗口]
+    end
+```
+
+### 快捷键映射图
+
+```mermaid
+flowchart LR
+    subgraph "窗口焦点切换"
+        A1["Alt + Shift + H/J/K/L"] --> B1["切换到左/下/上/右侧窗口"]
+        A2["Alt + 方向键"] --> B1
+    end
+    
+    subgraph "窗口大小调整"
+        C1["Alt + H"] --> D1["左边框向左移动（窗口变宽）"]
+        C2["Alt + J"] --> D2["左边框向右移动（窗口变窄）"]
+        C3["Alt + K"] --> D3["右边框向左移动（窗口变窄）"]
+        C4["Alt + L"] --> D4["右边框向右移动（窗口变宽）"]
+    end
+    
+    subgraph "工作区管理"
+        E1["Alt + I/O/P/[/]"] --> F1["切换到 1/2/3/4/5 号空间"]
+        E2["Alt + Shift + I/O/P/[/]"] --> F2["将窗口移动到 1/2/3/4/5 号空间"]
+    end
+```
+
+### 安装流程图
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant S as 安装脚本
+    participant B as Homebrew
+    participant Y as yabai
+    participant K as skhd
+    participant I as SpaceId
+    
+    U->>S: 运行 install.sh
+    S->>S: 检查 SIP 状态
+    S->>B: 安装/检查 Homebrew
+    S->>B: 安装 yabai, skhd, SpaceId
+    B->>Y: 安装 yabai
+    B->>K: 安装 skhd
+    B->>I: 安装 SpaceId
+    S->>Y: 配置 yabai
+    S->>Y: 安装脚本添加组件
+    S->>K: 配置 skhd
+    S->>K: 创建启动项
+    S->>I: 启动 SpaceId
+    S->>U: 安装完成
+```
+
 ## 前提条件
 
 - macOS 系统（建议 Sonoma 或更高版本）
