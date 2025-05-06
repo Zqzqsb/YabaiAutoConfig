@@ -150,13 +150,20 @@ cat ~/Library/Logs/skhd.log
 
 1. **工作区切换或窗口移动不起作用**
    - 确保 SIP 已禁用: `csrutil status`
-   - 重新加载脚本添加组件: `sudo yabai --load-sa`
+   - **重要**: 确保 yabai 脚本添加组件已正确加载: `sudo yabai --load-sa`
    - 重启 yabai 服务: `yabai --restart-service`
 
 2. **快捷键不起作用**
    - 确保 skhd 服务正在运行
+   - **重要**: 确保已授予 skhd 辅助功能权限（系统设置 -> 隐私与安全性 -> 辅助功能）
    - 检查是否有其他应用占用了相同的快捷键
    - 重启 skhd 服务: `launchctl unload -w ~/Library/LaunchAgents/com.zq.skhd.plist && launchctl load -w ~/Library/LaunchAgents/com.zq.skhd.plist`
+   - 如果仍然不工作，检查 skhd 日志: `cat ~/Library/Logs/skhd.log`
+
+3. **安装后 skhd 无法启动**
+   - 检查 skhd 路径是否正确: `which skhd`
+   - 确保 LaunchAgent 配置文件中使用了正确的绝对路径
+   - 尝试手动运行 skhd 查看错误: `skhd -V`
 
 ## 卸载
 
