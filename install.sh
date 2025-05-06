@@ -122,13 +122,27 @@ configure_yabai() {
 configure_skhd() {
     print_message "配置 skhd..."
     
+    # 获取 skhd 的实际路径
+    SKHD_PATH=$(which skhd)
+    if [ -z "$SKHD_PATH" ]; then
+        print_error "找不到 skhd 可执行文件，请确保已正确安装 skhd。"
+        exit 1
+    fi
+    print_success "找到 skhd 路径: $SKHD_PATH"
+    
     # 复制 skhd 配置文件
     cp ./config/skhdrc ~/.skhdrc
     print_success "skhd 配置文件已复制到 ~/.skhdrc"
     
     # 创建 skhd 启动项
     mkdir -p ~/Library/LaunchAgents
-    cp ./config/com.zq.skhd.plist ~/Library/LaunchAgents/
+    
+    # 读取 plist 模板并替换占位符
+    USER_HOME=$HOME
+    cat ./config/com.zq.skhd.plist | \
+    sed "s|__SKHD_PATH__|$SKHD_PATH|g" | \
+    sed "s|__USER_HOME__|$USER_HOME|g" \
+    > ~/Library/LaunchAgents/com.zq.skhd.plist
     
     # 停止现有的 skhd 服务
     launchctl unload -w ~/Library/LaunchAgents/com.zq.skhd.plist &> /dev/null
@@ -136,6 +150,11 @@ configure_skhd() {
     # 启动 skhd 服务
     launchctl load -w ~/Library/LaunchAgents/com.zq.skhd.plist
     print_success "skhd 服务已启动。"
+    
+    # 提醒用户授予辅助功能权限
+    print_warning "重要提示: skhd 需要辅助功能权限才能正常工作!"
+    print_message "请前往 系统设置 -> 隐私与安全性 -> 辅助功能，并确保 skhd 已被授权。"
+    print_message "skhd 路径: $SKHD_PATH"
 }
 
 # 启动 SpaceId

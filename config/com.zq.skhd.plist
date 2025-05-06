@@ -6,9 +6,9 @@
     <string>com.zq.skhd</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/opt/homebrew/bin/skhd</string>
+        <string>__SKHD_PATH__</string>
         <string>-c</string>
-        <string>~/.skhdrc</string>
+        <string>__USER_HOME__/.skhdrc</string>
     </array>
     <key>EnvironmentVariables</key>
     <dict>
@@ -20,9 +20,9 @@
     <key>KeepAlive</key>
     <true/>
     <key>StandardOutPath</key>
-    <string>~/Library/Logs/skhd.log</string>
+    <string>__USER_HOME__/Library/Logs/skhd.log</string>
     <key>StandardErrorPath</key>
-    <string>~/Library/Logs/skhd.log</string>
+    <string>__USER_HOME__/Library/Logs/skhd.log</string>
     <key>ProcessType</key>
     <string>Interactive</string>
 </dict>
